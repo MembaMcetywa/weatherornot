@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700&family=PressStart2P:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 * {
   box-sizing: border-box;
@@ -8,7 +9,7 @@
 
 body {
   font-family: "Outfit", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
-    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    "Fira Sans", "Droid Sans", "Helvetica Neue", "Press Start 2P", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -77,9 +78,7 @@ h1 {
 
 .app .description {
   position: relative;
-  right: -90%;
   transform-origin: 0 0;
-  transform: rotate(269deg);
 }
 
 .app .bottom {
@@ -95,4 +94,22 @@ h1 {
 
 .bold {
   font-weight: 700;
+}
+
+.hero {
+  max-width: 700px;
+  height: auto;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.hero .heading {
+  display: flex;
+  justify-content: flex-start;
+  font-size: 1.5rem;
+  @font-face {
+    font-family: "arcadeFunk";
+    src: url("https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700&family=inter:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+  }
 }
