@@ -1,0 +1,30 @@
+{
+  "coord": { "lon": 27.9116, "lat": -33.0153 },
+  "weather": [
+    { "id": 800, "main": "Clear", "description": "clear sky", "icon": "01d" }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 30.52,
+    "feels_like": 34.31,
+    "temp_min": 30.52,
+    "temp_max": 30.52,
+    "pressure": 1010,
+    "humidity": 62
+  },
+  "visibility": 10000,
+  "wind": { "speed": 2.06, "deg": 90 },
+  "clouds": { "all": 0 },
+  "dt": 1675584421,
+  "sys": {
+    "type": 1,
+    "id": 1912,
+    "country": "ZA",
+    "sunrise": 1675568103,
+    "sunset": 1675616975
+  },
+  "timezone": 7200,
+  "id": 1006984,
+  "name": "East London",
+  "cod": 200
+}
