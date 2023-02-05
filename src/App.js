@@ -2,28 +2,61 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./index.css";
 function App() {
-  // const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=895284fb2d2c50a520ea537456963d9c`;
+  const [location, setLocation] = useState("");
+  const [data, setData] = useState({});
+
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=895284fb2d2c50a520ea537456963d9c`;
+
+  const searchLocation = (event) => {
+    if (event.key === "Enter") {
+      axios.get(url).then((response) => {
+        setData(response.data);
+        console.log(response.data);
+      });
+      setLocation("");
+    }
+  };
   return (
-    <div className="App">
+    <div className="app">
+      <div className="search">
+        <input
+          value={location}
+          onChange={(event) => setLocation(event.target.value)}
+          onKeyPress={searchLocation}
+          placeholder="Enter Location"
+          type="text"
+        />
+      </div>
       <div className="container">
         <div className="top">
-          <div className="location">East London</div>
+          <div className="location">{data.name}</div>
           <div className="temp">
-            <h1>30°C</h1>
+            {data.main ? <h1>{Math.floor(data.main.temp)} °C</h1> : null}
           </div>
-          <div className="description">Cloudy with a chance of meatballs</div>
-        </div>
-        <div className="bottom">
-          <div className="feelslike">
-            <p>30°C</p>
-          </div>
-          <div className="humidity">
-            <p>62%</p>
-          </div>
-          <div className="wind">
-            <p>2 KPH</p>
+          <div className="description">
+            {data.weather ? <p>{data.weather[0].main}</p> : null}
           </div>
         </div>
+        {data.name !== undefined && (
+          <div className="bottom">
+            <div className="feelslike">
+              {data.main ? (
+                <p className="bold">{Math.floor(data.main.feels_like)} °C</p>
+              ) : null}
+              <p>Feels like</p>
+            </div>
+            <div className="humidity">
+              {data.main ? <p className="bold">{data.main.humidity}%</p> : null}
+              <p>Humidity</p>
+            </div>
+            <div className="wind">
+              {data.wind ? (
+                <p className="bold">{Math.floor(data.wind.speed)} KPH</p>
+              ) : null}
+              <p>Windspeed</p>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
