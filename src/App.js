@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./index.css";
 import KEY from "./util.js";
-import Forecast from "./components/forecast";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -14,8 +13,8 @@ function App() {
 
   const searchCity = (event) => {
     if (event.key === "Enter") {
-      toast.info("Fetching weather info");
       axios.get(url).then((response) => {
+        toast.info("Fetching weather info");
         setData(response.data);
         console.log(response.data);
       });
