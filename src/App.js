@@ -68,7 +68,6 @@ function App() {
             </div>
           </div>
         )}
-        <Forecast />
         <ToastContainer autoClose={1000} theme="colored" newestOnTop={true} />
       </div>
     </div>
