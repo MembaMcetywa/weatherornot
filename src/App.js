@@ -6,19 +6,20 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
-  const [location, setLocation] = useState("");
+  const [city, setCity] = useState("");
   const [data, setData] = useState({});
 
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${KEY}`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${process.env.REACT_APP_API_KEY}`;
 
   const searchCity = (event) => {
     if (event.key === "Enter") {
       axios.get(url).then((response) => {
-        toast.info("Fetching weather info");
         setData(response.data);
-        console.log(response.data);
+        if (response.status !== 200) {
+          toast.error("There has been a problem getting to your destination.");
+        }
       });
-      setLocation("");
+      setCity("");
     }
   };
   return (
@@ -28,8 +29,8 @@ function App() {
       </div>
       <div className="search">
         <input
-          value={location}
-          onChange={(event) => setLocation(event.target.value)}
+          value={city}
+          onChange={(event) => setCity(event.target.value)}
           onKeyDown={searchCity}
           placeholder="Enter Location"
           type="text"
