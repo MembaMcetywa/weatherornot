@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./index.css";
 import KEY from "./util.js";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [location, setLocation] = useState("");
@@ -12,6 +14,7 @@ function App() {
   const searchCity = (event) => {
     if (event.key === "Enter") {
       axios.get(url).then((response) => {
+        toast.info("Fetching weather info");
         setData(response.data);
         console.log(response.data);
       });
@@ -51,7 +54,9 @@ function App() {
               <p>Feels like</p>
             </div>
             <div className="humidity">
-              {data.main ? <p className="bold">{data.main.humidity}%</p> : null}
+              {data.main ? (
+                <p className="bold">{data.main.humidity} %</p>
+              ) : null}
               <p>Humidity</p>
             </div>
             <div className="wind">
@@ -62,6 +67,7 @@ function App() {
             </div>
           </div>
         )}
+        <ToastContainer autoClose={1000} theme="colored" newestOnTop={true} />
       </div>
     </div>
   );
